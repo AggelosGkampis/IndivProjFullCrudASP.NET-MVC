@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace SkyDreaming.Models.Enums
+{
+    public enum HairColor
+
+    {
+        Blonde,
+        Black,
+        Brown,
+        Red,
+        Pink,
+        LightBlonde,
+    }
+
+}
