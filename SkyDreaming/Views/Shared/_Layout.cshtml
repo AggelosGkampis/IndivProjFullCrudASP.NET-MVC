@@ -16,14 +16,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Holiday Love", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Angel", "Index", "Angel")</li>
+                    <li>@Html.ActionLink("Angels", "Index", "Angel")</li> @*θα γράφει Angels, θα με πηγαίνει στη μέθοδο Index του Angel controller*@
+                    <li>@Html.ActionLink("Rooms", "Index", "Room")</li>
                 </ul>
             </div>
         </div>

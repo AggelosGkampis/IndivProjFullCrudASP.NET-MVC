@@ -14,5 +14,7 @@ namespace SkyDreaming.Mycontext
 
         }
         public DbSet<Angel> Angels { get; set; }
+
+        public DbSet<Room> Rooms { get; set; }
     }
 }

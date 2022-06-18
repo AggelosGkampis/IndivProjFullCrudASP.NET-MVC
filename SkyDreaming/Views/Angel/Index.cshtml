@@ -1,7 +1,82 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@model IEnumerable<SkyDreaming.Models.Angel>
+@*Για να ξέρει το view με ποιό model δουλεύω*@
+
+
+@{ViewBag.title = "HolyLand";
+
 }
 
-<h2>This is it</h2>
+@if (TempData["message"] !=null)
+{
+    <div class="alert-success alert-dismissible fade in" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success! </strong>@TempData["message"]   
+    </div>
+}
 
+<a class="btn btn-primary" href="/Angel/Create">Create Angel</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Kg</th>
+            <th>Height</th>
+            <th>HairColor</th>
+            <th>Age</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ang in Model)
+        {
+            if (ang.Age > 25)      // Conditional Rendering 
+            {
+                <tr class="bg-danger">
+                    <td><img width="70" src="@ang.ImageUrl" /></td>
+                    <td>@ang.Id</td>
+                    <td>@ang.Name</td>
+                    <td>@ang.Kg</td>
+                    <td>@ang.Height</td>
+                    <td>@ang.HairColor</td>
+                    <td>@ang.Age</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Angel/Edit?id=@ang.Id">Edit</a>
+                        @*<a class="btn btn-danger" href="/Angel/Delete?id=@ang.Id">Delete</a>*@
+                        <a class="btn alert-info" href="/Angel/Details?id=@ang.Id">Details</a>
+                        <form action="/Angel/delete" method="post">
+                            <input type="hidden" name="id" value="@ang.Id" />
+                            <input class="btn btn-danger" type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="bg-success">
+                    <td><img width="70" src="@ang.ImageUrl" /></td>
+                    <td>@ang.Id</td>
+                    <td>@ang.Name</td>
+                    <td>@ang.Kg</td>
+                    <td>@ang.Height</td>
+                    <td>@ang.HairColor</td>
+                    <td>@ang.Age</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Angel/Edit?id=@ang.Id">Edit</a>
+                        @*<a class="btn btn-danger" href="/Angel/Delete?id=@ang.Id">Delete</a>*@
+                        <a class="btn alert-info" href="/Angel/Details?id=@ang.Id">Details</a>
+
+                        <form action="/Angel/delete" method="post">
+                            <input type="hidden" name="id" value="@ang.Id" />
+                            <input class="btn btn-danger"type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SkyDreaming.Models.Room>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rom in Model)
+        {
+        <tr class="bg-success">
+            <td><img width="150" src="@rom.UrlImage"/></td>
+            <td>@rom.Id</td>
+            <td>@rom.Name</td>
+            <td>@rom.Cost</td>
+            <td>
+                <a class="btn btn-info" href="/Room/Edit?id=@rom.Id">Edit</a>
+                <a class="btn btn-danger" href="/Room/Delete?id=@rom.Id">Delete</a>
+                <a class="btn btn-primary" href="/Room/Details?id=@rom.Id">Details</a>
+            </td>
+        </tr>      
+        }
+    </tbody>
+
+</table>

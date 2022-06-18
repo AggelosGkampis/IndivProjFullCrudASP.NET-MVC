@@ -10,27 +10,12 @@ namespace SkyDreaming.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationContext db = new ApplicationContext(); // αυτό το αντικέιμενο πρέπει να καταστραφεί γιατί έχουμε ένωσε με την βάση
 
-        private AngelRepository angelRepo;
-
-        public HomeController()
+        public ActionResult Index()
         {
-            angelRepo = new AngelRepository(db);
-        }
-        public ActionResult Index()                         // HomeController home = new HomeController();
-        {                                                   // home.index();  Αυτή η λειτουργία γίνεται εσωτερικά αυτόματα
-            var angels = angelRepo.GetAll();
-            return View(angels);
+            return View();
         }
 
-        protected override void Dispose(bool disposing)    // Αφού κατασταφέι ο controller (δηλαδή μόλις ανοίξει η σελίδα)
-        {
-            if (disposing)
-            {
-                db.Dispose();                // με αυτή την μέθοδο καταστρέφω το application context
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

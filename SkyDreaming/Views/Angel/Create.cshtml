@@ -1,0 +1,43 @@
+﻿@using SkyDreaming.Models.Enums
+
+<h1>Create an Angel</h1>
+
+<form method="post" class="form-group">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input id="name" class="form-control" type="text" name="Name" value="" />
+    </div>
+    <div class="form-group">
+        <label for="kg">Kg:</label>
+        <input id="kg" class="form-control" type="number" name="Kg" value="" />
+    </div>
+    <div class="form-group">
+        <label for="height">Height:</label>
+        <input id="height" class="form-control" type="number" name="Height" value="" />
+    </div>
+    @{
+        var hairColors = Enum.GetNames(typeof(HairColor));
+    }
+
+    <div class="form-group">
+        <label for="haircolor">Hair Color</label>
+        <select id="haircolor" class="form-control" name="HairColor">
+            @for (int i = 0; i < hairColors.Length; i++)
+            {
+                <option value="@i">@hairColors[i]</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input id="age" class="form-control" type="number" name="Age" value="" />
+    </div>
+    <div class="form-group">
+        <label for="imageurl">Photo:</label>
+        <input id="imageurl" class="form-control" type="url" name="ImageUrl" value="" />
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Create" />
+        <input class="btn btn-success" type="reset" value="Clear" />
+    </div>
+</form>
