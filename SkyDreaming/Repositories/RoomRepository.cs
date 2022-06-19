@@ -31,6 +31,11 @@ namespace SkyDreaming.Repositories
            var room =  db.Rooms.Find(id);
            return room;
         }
+        public Room GetByIdWithAngels(int? id)
+        {
+            var room = GetAllWithAngels().Find(x => x.Id == id);
+            return room;
+        }
 
         public void Add(Room room)
         {

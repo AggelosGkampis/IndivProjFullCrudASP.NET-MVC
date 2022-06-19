@@ -6,7 +6,21 @@
 
 <h2>Delete</h2>
 
+<script>
+    alert("Be carefull")
+</script>
 <h3>Are you sure you want to delete this?</h3>
+<h3>All Angels associated with this project will be deleted</h3>
+<ul>
+    @foreach (var angel in Model.Angels)
+    {
+        <li>@angel.Name</li>
+    }
+
+</ul>
+
+
+
 <div>
     <h4>Room</h4>
     <hr />

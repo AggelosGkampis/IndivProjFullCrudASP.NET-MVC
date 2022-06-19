@@ -6,11 +6,11 @@
 
 }
 
-@if (TempData["message"] !=null)
+@if (TempData["message"] != null)
 {
-    <div class="alert-success alert-dismissible fade in" >
+    <div class="alert-success alert-dismissible fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success! </strong>@TempData["message"]   
+        <strong>Success! </strong>@TempData["message"]
     </div>
 }
 
@@ -26,13 +26,14 @@
             <th>Height</th>
             <th>HairColor</th>
             <th>Age</th>
+            <th>Room</th>
             <th>Options</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var ang in Model)
         {
-            if (ang.Age > 25)      // Conditional Rendering 
+            if (ang.Age > 25)      // Conditional Rendering
             {
                 <tr class="bg-danger">
                     <td><img width="70" src="@ang.ImageUrl" /></td>
@@ -42,6 +43,7 @@
                     <td>@ang.Height</td>
                     <td>@ang.HairColor</td>
                     <td>@ang.Age</td>
+                    <td>@ang.Room.Name</td>
                     <td>
                         <a class="btn btn-primary" href="/Angel/Edit?id=@ang.Id">Edit</a>
                         @*<a class="btn btn-danger" href="/Angel/Delete?id=@ang.Id">Delete</a>*@
@@ -64,6 +66,7 @@
                     <td>@ang.Height</td>
                     <td>@ang.HairColor</td>
                     <td>@ang.Age</td>
+                    <td>@ang.Room.Name</td>
                     <td>
                         <a class="btn btn-primary" href="/Angel/Edit?id=@ang.Id">Edit</a>
                         @*<a class="btn btn-danger" href="/Angel/Delete?id=@ang.Id">Delete</a>*@
@@ -72,7 +75,7 @@
                         <form action="/Angel/delete" method="post">
                             @Html.AntiForgeryToken()
                             <input type="hidden" name="id" value="@ang.Id" />
-                            <input class="btn btn-danger"type="submit" value="Delete" />
+                            <input class="btn btn-danger" type="submit" value="Delete" />
                         </form>
                     </td>
                 </tr>

@@ -1,0 +1,75 @@
+﻿How to connect database with visual studio using entity framework:  SQL SERVER => Repository Service => Controller( Main ) => View ( WriteLine) html etc.
+
+1. Go to tools  => Manage Nuget packages for solution, find entityframework and install it
+
+2. Go to app config and use the ConnectionString with your server name 
+
+3.Add a new class Application Context, make it public and make it inherit from DbContext and make the constructor to change base class with the name of the connectionstring
+   as a parameter
+
+4.Go to tools => Package manager console and type enable-migrations in order to create the Migrations file with Configuration.cs
+
+5.Inside the Configuration class change AutomaticMigrationEnabled to true
+
+6. Type update-database (update-database -verbose for more info) or in the package manager console and check in sql if the database is up to date
+
+7. Add Folder entities,models,domainClasses , make class public and use prop Id for primary key
+
+8. Go to Application Context and add "public virtual DbSet<Student> Students { get; set; }" in order to make CRUD possible
+
+9. update-database -verbose
+
+10. Go to Configuration.cs inside Seed and add data (p.x. Student s1 = new Student("Hector", 99); )
+
+11. And after that type context.Students.AddOrUpdate(s => s.Name, s1, s2, s3);
+       context.SaveChanges();
+
+12. If something goes wrong or an error occurs , first thing I do is go to sql server and delete the database
+
+13. Also entiryframework needs the default costructor in the class px. student
+
+14. Create a folder Repositories and add repository for each class. Repository will be responsible to get data from database .
+
+15. Ο controller επιλέγει με ποιο context θα δουλέψει το repository, αφού μέσα στο consturctora του σε μια μεταβλητή κάτιRepo περνάει ένα new κάτιRepo με παράμετρο db που δείχνει σε ένα (new) context.
+
+16. Δημιουργώ στον controller μια override void Dispose μέθοδο για να καταστραφεί η σύνδεση με τη βάση όταν κάνει την δουλειά του ο controller.
+
+17. Στο view του controller περνάω αρχικά @model IEnumerable<projectname.Models.όνομακλάσης> για να ξέρει με ποιο Model θα δουλέψει
+
+18. Στα κουμπιά του view γράφω href="/className/MethodName/?id=@metablhth.Id "  έτσι ώστε με το πάτημα του κουμπιού να τρέξει στην repository η οποία θα πάει με βάση του Id στην μέθοδο η οποία
+θα κοιτάξει στη βάση για να κάνει την εκκάστοτε ενέργεια.
+
+19. Έστω ότι θέλω να φέρω ένα αντικείμενο απ΄ τη βάση η εντολή by Id θα πάει στον controller ο οποίος θα ζητήσει απ το repository την μεταβλητή, όπου το repository θα πάρει με βάση το Id όλα τα στοιχεία
+της εκκάστοτε μεταβλητής θα τα επιστρέψει στον controller και αυτός θα τα κάνει return View(μεταβλητή) , σημαντικό να προβλεφθούν null etc. Επίσης, στο τέλος και αφού φορτωθεί η σελίδα θα δουλέψει
+η Dispose Method του controller που θα σταματήσει την σύνδεση με την βάση.
+
+20. Αν θέλω να διαγράψω ένα αντικείμενο, πρώτα θα βάλω τον controller να το βρει με βάση του ID και σε δεύτερη φάση θα καλέσω την μέθοδο delete της Repository στην οποία θα περάσω το αντικείμενο .
+
+21. Βάζω decorator [HttpPost] στην ActionResult delete του controller για να μην γίνεται να διαγράψει κάποιος μέσω του url και επίσης στο view βάζω το delete σε μια form με method="post" και 
+action = "/ClassName/MethodName"
+
+22. Μπορώ να στείλω data (να κάνω request) με <a href=" "> </a>  ή με <form action=" "> </form> , τα anchor τα χρησιμοποιώ για get τρόπο ενώ τα form για post request.
+
+23. Με το TempData["key"] = "mplampla" μπορώ να στέλνω μηνύματα στον user μετά από κάποια μέθοδο  π.χ. διαγράφηκε με επιτυχία.
+
+24. Με το @Html.ValidationMessageFor() μπορώ να γράφω c# Και να παίρνω html 
+
+25.   @Html.LabelFor(m=>m.Name) , @Html.EditorFor(m=>m.Name, new { htmlAttributes = new { @class = "form-control", placeholder="Give your name" } }) 
+Με αυτές τις εντολές μπορώ να αντικαταστήσω ολόκληρη την html για τα πεδία μου.
+
+26. Decorator [ValidateAntiForgeryToken] στα ActionResult του controller και @Html.AntiForgeryToken() στην view για να στείλει η φόρμα μας τον μοναδικό κωδικό μέσω του payload 
+για ασφάλεια μοναδικότητας του χρήστη.
+
+27. Αν φτιάξω μια νέα κλάση μπορώ να πατήσω add controller => 3η επιλογή, επιλέγω το Model που θέλω και τα φτιάχνει όλα μόνο του με scafolding
+
+28. Σημαντικό να κάνω τα απαραίτητα Modifications και να προσθέσω το repository. Επίσης, πρέπει να είμαι σίγουρος ότι ο controller δεν παίρνει τις πληροφορίες απευθείας απ την βάση αλλά απ' το repository.
+
+29.  Όταν έχω σχέσεις μεταξύ κλάσεων πρέπει να περνάω στον costructor του controller της μιας κλάσης και την άλλη κλάση 
+
+30. Επειδή σε μία μέθοδο μπορώ να περνάω ένα μόνο αντικείμενο και να το στέλνω στο view χρησιμοποιούμε το ViewBag εάν θέλουμε να περάσουμε περισσότερα αντικέιμενα π.χ. τις συσχετιζόμενης κλάσης.       
+
+
+
+
+
+

@@ -102,7 +102,7 @@ namespace SkyDreaming.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = roomRepository.GetById(id);
+            Room room = roomRepository.GetByIdWithAngels(id);
             if (room == null)
             {
                 return HttpNotFound();

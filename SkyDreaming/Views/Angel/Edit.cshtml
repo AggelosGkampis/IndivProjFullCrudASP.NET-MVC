@@ -1,6 +1,6 @@
 ﻿@model SkyDreaming.Models.Angel
 @using SkyDreaming.Models.Enums
-
+@using SkyDreaming.Models
 
 <h1>Edit an Angel</h1>
 
@@ -22,11 +22,11 @@
     </div>
     @Html.ValidationMessageFor(m => m.Kg, "", new { @class = "text-danger" })
 
-<div class="form-group">
-    @Html.LabelFor(m => m.Height)
-    @Html.EditorFor(m => m.Height, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
-</div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Height)
+        @Html.EditorFor(m => m.Height, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.HairColor)
@@ -74,6 +74,26 @@
         <input id="imageurl" class="form-control" type="url" name="ImageUrl" value="@(Model?.ImageUrl)" />
     </div>
     @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+
+    <label id="project">Select Room</label>
+    <div class="form-group">
+        <select name="roomId" class="form-control">
+            @foreach (var room in ViewBag.Rooms as List<Room>)
+            {
+                if (room.Id == Model.RoomId)
+                {
+                    <option selected value="@room.Id">@room.Name</option>
+                }
+                else
+                {
+                    <option value="@room.Id"> @room.Name</option>
+                }
+
+            }
+        </select>
+    </div>
+
+
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="Edit" />
         <input class="btn btn-success" type="reset" value="Clear" />

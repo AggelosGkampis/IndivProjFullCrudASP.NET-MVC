@@ -24,7 +24,7 @@ namespace SkyDreaming.Controllers
         }
         public ActionResult Index()                         // HomeController home = new HomeController();
         {                                                   // home.index();  Αυτή η λειτουργία γίνεται εσωτερικά αυτόματα           
-            var angels = angelRepo.GetAll();
+            var angels = angelRepo.GetAllWithRooms();
             return View(angels);
         }
 
@@ -41,8 +41,7 @@ namespace SkyDreaming.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var rooms = roomRepository.GetAll();
-            ViewBag.Rooms = rooms;
+            GetProjects();
             return View();
         }
 
@@ -53,9 +52,10 @@ namespace SkyDreaming.Controllers
             if (ModelState.IsValid)       // Εργαλείο του entityframework . Μας ρωτάει είναι σωστό το μοντέλο angel που μας έρχεται με βάση τα restrictions που έχουμε στα properties του montelou
             {
                 angelRepo.Add(angel);
-                TempData["message"] = "You have succesfully created an Angel";
+                ShowAlert("You have succesfully created an Angel");
                 return RedirectToAction("Index");
             }
+            GetProjects();
 
             return View(angel);
            
@@ -74,6 +74,7 @@ namespace SkyDreaming.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
+            GetProjects();
             return View(ang);
         }
 
@@ -84,9 +85,11 @@ namespace SkyDreaming.Controllers
             if (ModelState.IsValid)
             {
                 angelRepo.Edit(angel);
-                TempData["message"] = $"Angel with id {angel.Id} succesfully updated !";
+                ShowAlert($"Angel with id {angel.Id} succesfully updated !");
                 return RedirectToAction("Index");
             }
+            GetProjects();
+
             return View(angel);
         }
 
@@ -99,10 +102,8 @@ namespace SkyDreaming.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
             }
-            angelRepo.Delete(angel);
-
-            TempData["message"] = $"You have been successfully deleted the chick with name = {angel.Name}";
-
+            angelRepo.Delete(angel);          
+            ShowAlert($"You have been successfully deleted the chick with name = {angel.Name}");
             return RedirectToAction("Index");                                           // Αφού διαγράψεις πήγαινέ με στην Index
 
         }
@@ -114,6 +115,19 @@ namespace SkyDreaming.Controllers
                 db.Dispose();                // με αυτή την μέθοδο καταστρέφω το application context
             }
             base.Dispose(disposing);
+        }
+
+        [NonAction]
+        public void GetProjects()
+        {
+            var rooms = roomRepository.GetAll();
+            ViewBag.Rooms = rooms;
+        }
+          
+        [NonAction]
+        public void ShowAlert(string message)
+        {
+            TempData["message"] = message;
         }
     }
 }

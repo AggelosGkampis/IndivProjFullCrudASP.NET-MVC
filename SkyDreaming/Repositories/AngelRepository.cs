@@ -22,6 +22,10 @@ namespace SkyDreaming.Repositories
             return db.Angels.ToList();
         }
 
+        public List<Angel>GetAllWithRooms()
+        {
+            return db.Angels.Include(x => x.Room).ToList();
+        }
         public Angel GetById(int? id)
         {
            var angel =  db.Angels.Find(id);
