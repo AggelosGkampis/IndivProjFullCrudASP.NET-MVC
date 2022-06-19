@@ -1,30 +1,59 @@
 ﻿@model IEnumerable<SkyDreaming.Models.Room>
 
+@{
+    ViewBag.Title = "Index";
+}
 
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Cost
+            </th>
+            <th>
+            </th>
+            <th>
+                Angels
+            </th>
             <th></th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Cost</th>
-            <th>Options</th>
         </tr>
     </thead>
+
     <tbody>
-        @foreach (var rom in Model)
+        @foreach (var room in Model)
         {
-        <tr class="bg-success">
-            <td><img width="150" src="@rom.UrlImage"/></td>
-            <td>@rom.Id</td>
-            <td>@rom.Name</td>
-            <td>@rom.Cost</td>
-            <td>
-                <a class="btn btn-info" href="/Room/Edit?id=@rom.Id">Edit</a>
-                <a class="btn btn-danger" href="/Room/Delete?id=@rom.Id">Delete</a>
-                <a class="btn btn-primary" href="/Room/Details?id=@rom.Id">Details</a>
-            </td>
-        </tr>      
+            <tr>
+                <td>
+                    @room.Name
+                </td>
+                <td>
+                    @room.Cost
+                </td>
+                <td>
+                    <img width="200" src="@room.UrlImage" />
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var ang in room.Angels)
+                        {
+                            <li>@ang.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "Edit", new { id = room.Id })
+                    @Html.ActionLink("Details", "Details", "Room", new { id = room.Id }, null)                 
+                    @Html.ActionLink("Delete", "Delete", new { id = room.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
         }
     </tbody>
 

@@ -14,10 +14,13 @@ namespace SkyDreaming.Controllers
         private ApplicationContext db = new ApplicationContext(); // αυτό το αντικέιμενο πρέπει να καταστραφεί γιατί έχουμε ένωση με την βάση
 
         private AngelRepository angelRepo;
+        private RoomRepository roomRepository;
 
         public AngelController()
         {
             angelRepo = new AngelRepository(db);
+            roomRepository = new RoomRepository(db);
+
         }
         public ActionResult Index()                         // HomeController home = new HomeController();
         {                                                   // home.index();  Αυτή η λειτουργία γίνεται εσωτερικά αυτόματα           
@@ -38,23 +41,57 @@ namespace SkyDreaming.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            var rooms = roomRepository.GetAll();
+            ViewBag.Rooms = rooms;
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Angel angel)
         {
             if (ModelState.IsValid)       // Εργαλείο του entityframework . Μας ρωτάει είναι σωστό το μοντέλο angel που μας έρχεται με βάση τα restrictions που έχουμε στα properties του montelou
             {
                 angelRepo.Add(angel);
+                TempData["message"] = "You have succesfully created an Angel";
                 return RedirectToAction("Index");
             }
 
-            return View();
+            return View(angel);
            
         }
 
+        [HttpGet]
+        public ActionResult Edit (int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            var ang = angelRepo.GetById(id);
+
+            if (ang == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            return View(ang);
+        }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Angel angel)
+        {
+            if (ModelState.IsValid)
+            {
+                angelRepo.Edit(angel);
+                TempData["message"] = $"Angel with id {angel.Id} succesfully updated !";
+                return RedirectToAction("Index");
+            }
+            return View(angel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int? id)
         {
             var angel = angelRepo.GetById(id);

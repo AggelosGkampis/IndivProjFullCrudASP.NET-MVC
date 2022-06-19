@@ -33,6 +33,12 @@ namespace SkyDreaming.Repositories
             db.Entry(angel).State = EntityState.Added;
             db.SaveChanges();
         }
+
+        public void Edit(Angel angel)
+        {            
+            db.Entry(angel).State = EntityState.Modified;
+            db.SaveChanges();
+        }
        public void Delete(Angel ang)
         {
             db.Entry(ang).State = EntityState.Deleted;

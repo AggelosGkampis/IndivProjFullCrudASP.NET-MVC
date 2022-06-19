@@ -47,6 +47,7 @@
                         @*<a class="btn btn-danger" href="/Angel/Delete?id=@ang.Id">Delete</a>*@
                         <a class="btn alert-info" href="/Angel/Details?id=@ang.Id">Details</a>
                         <form action="/Angel/delete" method="post">
+                            @Html.AntiForgeryToken()
                             <input type="hidden" name="id" value="@ang.Id" />
                             <input class="btn btn-danger" type="submit" value="Delete" />
                         </form>
@@ -69,6 +70,7 @@
                         <a class="btn alert-info" href="/Angel/Details?id=@ang.Id">Details</a>
 
                         <form action="/Angel/delete" method="post">
+                            @Html.AntiForgeryToken()
                             <input type="hidden" name="id" value="@ang.Id" />
                             <input class="btn btn-danger"type="submit" value="Delete" />
                         </form>
