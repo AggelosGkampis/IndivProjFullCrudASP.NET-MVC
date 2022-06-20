@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<SkyDreaming.Models.Angel>
 @*Για να ξέρει το view με ποιό model δουλεύω*@
-
+@using SkyDreaming.Models.Enums;
 
 @{ViewBag.title = "HolyLand";
 
@@ -13,8 +13,39 @@
         <strong>Success! </strong>@TempData["message"]
     </div>
 }
+<br />
+<br />
+
+<div>
+
+    <form>
+        @{
+            var hairColors = Enum.GetNames(typeof(HairColor));
+        }
+
+        <select name="searchHairColor">
+            <option>All</option>
+            @foreach (var HairColor in hairColors)
+            {
+
+                <option>@HairColor</option>
+            }
+
+        </select>
+
+        <input type="number" name="searchMin" value="@(ViewBag.currentMin is null ? @ViewBag.MinAge : ViewBag.currentMin)" placeholder="Choose min age" min="ViewBag.MinAge"/>
+        <input type="number" name="searchMax" value="ViewBag.MaxAge" placeholder="Choose max age" max="ViewBag.MaxAge"/>
+
+        <input type="text" name="searchName" value="@(ViewBag.currentMax is null ? @ViewBag.MaxAge : ViewBag.currentMax)" placeholder="Search name" />
+        <input type="submit" value="Search an Angel" />
+    </form>
+
+</div>
+
+
 
 <a class="btn btn-primary" href="/Angel/Create">Create Angel</a>
+
 
 <table class="table">
     <thead>
@@ -36,7 +67,7 @@
             if (ang.Age > 25)      // Conditional Rendering
             {
                 <tr class="bg-danger">
-                    <td><img width="70" src="@ang.ImageUrl" /></td>
+                    <td><img width="120" height="120" src="@ang.ImageUrl" /></td>
                     <td>@ang.Id</td>
                     <td>@ang.Name</td>
                     <td>@ang.Kg</td>
@@ -59,7 +90,7 @@
             else
             {
                 <tr class="bg-success">
-                    <td><img width="70" src="@ang.ImageUrl" /></td>
+                    <td><img width="120" height="100" src="@ang.ImageUrl" /></td>
                     <td>@ang.Id</td>
                     <td>@ang.Name</td>
                     <td>@ang.Kg</td>

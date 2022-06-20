@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkyDreaming.Models.CustomValidations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,6 +14,8 @@ namespace SkyDreaming.Models
         public int Id { get; set; }
 
         [Display(Name="Name")]
+        [Required(ErrorMessage ="You must give a name")]
+        [CustomValidation(typeof(MyValidationMethods), "ValidateFirstCapitalLetter")]
         public string Name { get; set; }
 
         public decimal Cost { get; set; }

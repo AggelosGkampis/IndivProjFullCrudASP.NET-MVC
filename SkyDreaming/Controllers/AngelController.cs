@@ -22,9 +22,43 @@ namespace SkyDreaming.Controllers
             roomRepository = new RoomRepository(db);
 
         }
-        public ActionResult Index()                         // HomeController home = new HomeController();
+        public ActionResult Index(string searchName,string searchHairColor,int? searchMin, int?searchMax)        // HomeController home = new HomeController();
         {                                                   // home.index();  Αυτή η λειτουργία γίνεται εσωτερικά αυτόματα           
             var angels = angelRepo.GetAllWithRooms();
+
+            // Current State
+            ViewBag.currentName = searchName;
+            ViewBag.currentHairColor = searchHairColor;
+            ViewBag.currentMin = searchMin;
+            ViewBag.currentMax = searchMax;
+            
+
+            ViewBag.MinAge = angels.Min(x => x.Age);
+            ViewBag.MaxAge = angels.Max(x => x.Age);
+
+            // Filtering . . .
+            if (!string.IsNullOrWhiteSpace(searchName))     // null or "" or "   "
+            {
+                //angels = angels.Where(x => x.Name.ToUpper() == searchName.ToUpper()).ToList();
+                angels = angels.Where(x => x.Name.ToUpper().Contains(searchName.ToUpper())).ToList();
+            }
+
+
+            if (searchHairColor != "All" && !string.IsNullOrWhiteSpace(searchHairColor))
+            {
+                angels = angels.Where(x => x.HairColor.ToString() == searchHairColor).ToList();
+            }
+
+            if (!(searchMin is null))
+            {
+                angels = angels.Where(x => x.Age >= searchMin).ToList();
+            }
+
+            if (!(searchMax is null))
+            {
+                angels = angels.Where(x => x.Age <= searchMax).ToList();
+            }
+
             return View(angels);
         }
 
