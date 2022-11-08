@@ -14,17 +14,17 @@ namespace SkyDreaming.Controllers
         private ApplicationContext db = new ApplicationContext(); // αυτό το αντικέιμενο πρέπει να καταστραφεί γιατί έχουμε ένωση με την βάση
 
         private IGmodelRepository IGmodelRepo;
-        private RoomRepository roomRepository;
+        private productRepository productRepository;
 
         public IGmodelController()
         {
             IGmodelRepo = new IGmodelRepository(db);
-            roomRepository = new RoomRepository(db);
+            productRepository = new productRepository(db);
 
         }
         public ActionResult Index(string searchName,string searchHairColor,int? searchMin, int?searchMax)        // HomeController home = new HomeController();
         {                                                   // home.index();  Αυτή η λειτουργία γίνεται εσωτερικά αυτόματα           
-            var IGmodels = IGmodelRepo.GetAllWithRooms();
+            var IGmodels = IGmodelRepo.GetAllWithproducts();
 
             // Current State
             ViewBag.currentName = searchName;
@@ -154,8 +154,8 @@ namespace SkyDreaming.Controllers
         [NonAction]
         public void GetProjects()
         {
-            var rooms = roomRepository.GetAll();
-            ViewBag.Rooms = rooms;
+            var products = productRepository.GetAll();
+            ViewBag.products = products;
         }
           
         [NonAction]

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SkyDreaming.Models.Room>
+﻿@model IEnumerable<SkyDreaming.Models.product>
 
 @{
     ViewBag.Title = "Index";
@@ -28,30 +28,30 @@
     </thead>
 
     <tbody>
-        @foreach (var room in Model)
+        @foreach (var product in Model)
         {
             <tr>
                 <td>
-                    @room.Name
+                    @product.Name
                 </td>
                 <td>
-                    @room.Cost
+                    @product.Cost
                 </td>
                 <td>
-                    <img width="120" height="100" src="@room.UrlImage" />
+                    <img width="120" height="100" src="@product.UrlImage" />
                 </td>
                 <td>
                     <ul>
-                        @foreach (var ang in room.IGmodels)
+                        @foreach (var ang in product.IGmodels)
                         {
                             <li>@ang.Name</li>
                         }
                     </ul>
                 </td>
                 <td>
-                    @Html.ActionLink("Update", "Edit", new { id = room.Id })
-                    @Html.ActionLink("Details", "Details", "Room", new { id = room.Id }, null)                 
-                    @Html.ActionLink("Delete", "Delete", new { id = room.Id }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Update", "Edit", new { id = product.Id })
+                    @Html.ActionLink("Details", "Details", "product", new { id = product.Id }, null)                 
+                    @Html.ActionLink("Delete", "Delete", new { id = product.Id }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }

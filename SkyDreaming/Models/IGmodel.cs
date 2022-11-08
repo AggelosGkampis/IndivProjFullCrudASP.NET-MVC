@@ -33,10 +33,10 @@ namespace SkyDreaming.Models
 
 
         // Foreign Keys
-        public int RoomId { get; set; }
+        public int productId { get; set; }
 
         // Navigation Properties
 
-        public Room Room { get; set; }
+        public product product { get; set; }
     }
 }

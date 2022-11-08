@@ -12,111 +12,111 @@ using SkyDreaming.Repositories;
 
 namespace SkyDreaming.Controllers
 {
-    public class RoomController : Controller
+    public class productController : Controller
     {
         private ApplicationContext db = new ApplicationContext();
 
-        private RoomRepository roomRepository;
-        public RoomController()
+        private productRepository productRepository;
+        public productController()
         {
-            roomRepository = new RoomRepository(db);
+            productRepository = new productRepository(db);
         }
-        // GET: Room
+        // GET: product
         public ActionResult Index()
         {
-            var rooms = roomRepository.GetAllWithIGmodels();
-            return View(rooms.ToList());
+            var products = productRepository.GetAllWithIGmodels();
+            return View(products.ToList());
         }
 
-        // GET: Room/Details/5
+        // GET: product/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = roomRepository.GetById(id);
-            if (room == null)
+            product product = productRepository.GetById(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(room);
+            return View(product);
         }
 
-        // GET: Room/Create
+        // GET: product/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Room/Create
+        // POST: product/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Cost,UrlImage")] Room room)
+        public ActionResult Create([Bind(Include = "Id,Name,Cost,UrlImage")] product product)
         {
             if (ModelState.IsValid)
             {
-                roomRepository.Add(room);               
+                productRepository.Add(product);               
                 return RedirectToAction("Index");
             }
 
-            return View(room);
+            return View(product);
         }
 
-        // GET: Room/Edit/5
+        // GET: product/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = roomRepository.GetById(id);
-            if (room == null)
+            product product = productRepository.GetById(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(room);
+            return View(product);
         }
 
-        // POST: Room/Edit/5
+        // POST: product/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Cost,UrlImage")] Room room)
+        public ActionResult Edit([Bind(Include = "Id,Name,Cost,UrlImage")] product product)
         {
             if (ModelState.IsValid)
             {
-                roomRepository.Edit(room);
+                productRepository.Edit(product);
                 return RedirectToAction("Index");
             }
-            return View(room);
+            return View(product);
         }
 
-        // GET: Room/Delete/5
+        // GET: product/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = roomRepository.GetByIdWithIGmodels(id);
-            if (room == null)
+            product product = productRepository.GetByIdWithIGmodels(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(room);
+            return View(product);
         }
 
-        // POST: Room/Delete/5
+        // POST: product/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Room room = roomRepository.GetById(id);
-            roomRepository.Delete(room);
+            product product = productRepository.GetById(id);
+            productRepository.Delete(product);
             return RedirectToAction("Index");
         }
 

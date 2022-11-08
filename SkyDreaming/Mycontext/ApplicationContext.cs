@@ -17,6 +17,6 @@ namespace SkyDreaming.Mycontext
         }
         public DbSet<IGmodel> IGmodels { get; set; }
 
-        public DbSet<Room> Rooms { get; set; }
+        public DbSet<product> products { get; set; }
     }
 }

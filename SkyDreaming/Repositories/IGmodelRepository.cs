@@ -22,9 +22,9 @@ namespace SkyDreaming.Repositories
             return db.IGmodels.ToList();
         }
 
-        public List<IGmodel>GetAllWithRooms()
+        public List<IGmodel>GetAllWithproducts()
         {
-            return db.IGmodels.Include(x => x.Room).ToList();
+            return db.IGmodels.Include(x => x.product).ToList();
         }
         public IGmodel GetById(int? id)
         {

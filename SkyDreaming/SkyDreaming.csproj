@@ -128,7 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\IGmodelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,7 +137,7 @@
     <Compile Include="Models\CustomValidations\MyValidationMethods.cs" />
     <Compile Include="Models\Enums\HairColor.cs" />
     <Compile Include="Models\Queries\IGmodelSearchQuery.cs" />
-    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Mycontext\ApplicationContext.cs" />
     <Compile Include="Mycontext\Initializers\MockupDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,14 +182,14 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\IGmodel\Index.cshtml" />
-    <Content Include="Views\Room\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\IGmodel\Details.cshtml" />
     <Content Include="Views\IGmodel\Create.cshtml" />
     <Content Include="Views\IGmodel\Edit.cshtml" />
-    <Content Include="Views\Room\Create.cshtml" />
-    <Content Include="Views\Room\Delete.cshtml" />
-    <Content Include="Views\Room\Details.cshtml" />
-    <Content Include="Views\Room\Edit.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -76,10 +76,10 @@
     </div>
     @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
 
-<label id="project">Select Room</label>
+<label id="project">Select product</label>
 <div class="form-group">
-    <select name="roomId" class="form-control">
-        @foreach (var item in ViewBag.Rooms as List<Room>)
+    <select name="productId" class="form-control">
+        @foreach (var item in ViewBag.products as List<product>)
         {
             <option value="@item.Id"> @item.Name</option>
         }

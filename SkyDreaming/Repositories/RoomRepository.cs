@@ -8,47 +8,47 @@ using System.Web;
 
 namespace SkyDreaming.Repositories
 {
-    public class RoomRepository
+    public class productRepository
     {
         ApplicationContext db;
 
-        public RoomRepository(ApplicationContext context)
+        public productRepository(ApplicationContext context)
         {
             db = context;
         }
 
-        public List<Room> GetAll()
+        public List<product> GetAll()
         {
-            return db.Rooms.ToList();
+            return db.products.ToList();
         }
 
-        public List<Room> GetAllWithIGmodels()
+        public List<product> GetAllWithIGmodels()
         {
-            return db.Rooms.Include(x => x.IGmodels).ToList();
+            return db.products.Include(x => x.IGmodels).ToList();
         }
-        public Room GetById(int? id)
+        public product GetById(int? id)
         {
-           var room =  db.Rooms.Find(id);
-           return room;
+           var product =  db.products.Find(id);
+           return product;
         }
-        public Room GetByIdWithIGmodels(int? id)
+        public product GetByIdWithIGmodels(int? id)
         {
-            var room = GetAllWithIGmodels().Find(x => x.Id == id);
-            return room;
+            var product = GetAllWithIGmodels().Find(x => x.Id == id);
+            return product;
         }
 
-        public void Add(Room room)
+        public void Add(product product)
         {
-            db.Entry(room).State = EntityState.Added;
+            db.Entry(product).State = EntityState.Added;
             db.SaveChanges();
         }
 
-        public void Edit(Room room)
+        public void Edit(product product)
         {            
-            db.Entry(room).State = EntityState.Modified;
+            db.Entry(product).State = EntityState.Modified;
             db.SaveChanges();
         }
-       public void Delete(Room rom)
+       public void Delete(product rom)
         {
             db.Entry(rom).State = EntityState.Deleted;
             db.SaveChanges();

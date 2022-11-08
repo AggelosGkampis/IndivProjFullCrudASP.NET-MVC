@@ -8,7 +8,7 @@ using System.Web;
 
 namespace SkyDreaming.Models
 {
-    public class Room
+    public class product
     {
         [Key]
         public int Id { get; set; }
@@ -22,7 +22,7 @@ namespace SkyDreaming.Models
 
         public string UrlImage { get; set; }
 
-        public Room()
+        public product()
         {
             IGmodels = new HashSet<IGmodel>();
         }

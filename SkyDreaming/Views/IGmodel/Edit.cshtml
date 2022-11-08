@@ -75,18 +75,18 @@
     </div>
     @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
 
-    <label id="project">Select Room</label>
+    <label id="project">Select product</label>
     <div class="form-group">
-        <select name="roomId" class="form-control">
-            @foreach (var room in ViewBag.Rooms as List<Room>)
+        <select name="productId" class="form-control">
+            @foreach (var product in ViewBag.products as List<product>)
             {
-                if (room.Id == Model.RoomId)
+                if (product.Id == Model.productId)
                 {
-                    <option selected value="@room.Id">@room.Name</option>
+                    <option selected value="@product.Id">@product.Name</option>
                 }
                 else
                 {
-                    <option value="@room.Id"> @room.Name</option>
+                    <option value="@product.Id"> @product.Name</option>
                 }
 
             }
