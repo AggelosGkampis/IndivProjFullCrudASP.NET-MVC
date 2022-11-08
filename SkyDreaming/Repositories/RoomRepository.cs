@@ -22,18 +22,18 @@ namespace SkyDreaming.Repositories
             return db.Rooms.ToList();
         }
 
-        public List<Room> GetAllWithAngels()
+        public List<Room> GetAllWithIGmodels()
         {
-            return db.Rooms.Include(x => x.Angels).ToList();
+            return db.Rooms.Include(x => x.IGmodels).ToList();
         }
         public Room GetById(int? id)
         {
            var room =  db.Rooms.Find(id);
            return room;
         }
-        public Room GetByIdWithAngels(int? id)
+        public Room GetByIdWithIGmodels(int? id)
         {
-            var room = GetAllWithAngels().Find(x => x.Id == id);
+            var room = GetAllWithIGmodels().Find(x => x.Id == id);
             return room;
         }
 

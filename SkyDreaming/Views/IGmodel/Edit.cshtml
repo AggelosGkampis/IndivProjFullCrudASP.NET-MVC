@@ -1,9 +1,8 @@
-﻿@model SkyDreaming.Models.Angel
+﻿@model SkyDreaming.Models.IGmodel
 @using SkyDreaming.Models.Enums
 @using SkyDreaming.Models
 
-
-<h1>Create an Angel</h1>
+<h1>Edit an IGmodel</h1>
 
 <form method="post" class="form-group">
     @Html.AntiForgeryToken()
@@ -76,22 +75,27 @@
     </div>
     @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
 
-<label id="project">Select Room</label>
-<div class="form-group">
-    <select name="roomId" class="form-control">
-        @foreach (var item in ViewBag.Rooms as List<Room>)
-        {
-            <option value="@item.Id"> @item.Name</option>
-        }
-    </select>
-</div>
+    <label id="project">Select Room</label>
+    <div class="form-group">
+        <select name="roomId" class="form-control">
+            @foreach (var room in ViewBag.Rooms as List<Room>)
+            {
+                if (room.Id == Model.RoomId)
+                {
+                    <option selected value="@room.Id">@room.Name</option>
+                }
+                else
+                {
+                    <option value="@room.Id"> @room.Name</option>
+                }
+
+            }
+        </select>
+    </div>
 
 
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="Create" />
+        <input class="btn btn-primary" type="submit" value="Edit" />
         <input class="btn btn-success" type="reset" value="Clear" />
     </div>
 </form>
-
-@*<a class="btn btn-success" href="/Angel/Index">Go Back</a>*@
-@Html.ActionLink("Go Back", "Index", null,new {@class="btn btn-success"}) 

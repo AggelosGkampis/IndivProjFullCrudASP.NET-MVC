@@ -9,7 +9,7 @@ using System.Web;
 
 namespace SkyDreaming.Models
 {
-    public class Angel
+    public class IGmodel
     {
         [Key]
         public int Id { get; set; }

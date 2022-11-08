@@ -328,7 +328,7 @@ $.extend($.validator, {
 		accept: "Please enter a value with a valid extension.",
 		maxlength: $.validator.format("Please enter no more than {0} characters."),
 		minlength: $.validator.format("Please enter at least {0} characters."),
-		rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
+		rIGmodelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
 		range: $.validator.format("Please enter a value between {0} and {1}."),
 		max: $.validator.format("Please enter a value less than or equal to {0}."),
 		min: $.validator.format("Please enter a value greater than or equal to {0}.")
@@ -954,7 +954,7 @@ $.extend($.validator, {
 				rules[this] = Number(rules[this]);
 			}
 		});
-		$.each(['rangelength', 'range'], function() {
+		$.each(['rIGmodelength', 'range'], function() {
 			if (rules[this]) {
 				rules[this] = [Number(rules[this][0]), Number(rules[this][1])];
 			}
@@ -968,7 +968,7 @@ $.extend($.validator, {
 				delete rules.max;
 			}
 			if (rules.minlength && rules.maxlength) {
-				rules.rangelength = [rules.minlength, rules.maxlength];
+				rules.rIGmodelength = [rules.minlength, rules.maxlength];
 				delete rules.minlength;
 				delete rules.maxlength;
 			}
@@ -1103,8 +1103,8 @@ $.extend($.validator, {
 			return this.optional(element) || this.getLength($.trim(value), element) <= param;
 		},
 		
-		// http://docs.jquery.com/Plugins/Validation/Methods/rangelength
-		rangelength: function(value, element, param) {
+		// http://docs.jquery.com/Plugins/Validation/Methods/rIGmodelength
+		rIGmodelength: function(value, element, param) {
 			var length = this.getLength($.trim(value), element);
 			return this.optional(element) || ( length >= param[0] && length <= param[1] );
 		},

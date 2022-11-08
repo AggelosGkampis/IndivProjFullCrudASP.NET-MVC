@@ -32,31 +32,31 @@ namespace SkyDreaming.Mycontext.Initializers
             #endregion
 
 
-            #region Angels Seeding
-            Angel angel1 = new Angel() { Id = 1, Name = "Thotiana", Height = 1.76, Kg = 66, HairColor = HairColor.LightBlonde, Age = 26, ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/81mckefMJHL.png" };
-            Angel angel2 = new Angel() { Id = 2, Name = "Vicky", Height = 1.72, Kg = 67, HairColor = HairColor.Black, Age = 22, ImageUrl = "https://i.pinimg.com/736x/b0/b2/7c/b0b27c6aba57362956a18e999cdd87ea.jpg" };
-            Angel angel3 = new Angel() { Id = 3, Name = "Victoria", Height = 1.68, Kg = 66, HairColor = HairColor.Brown, Age = 25, ImageUrl = "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5377.jpg?w=740&t=st=1655211315~exp=1655211915~hmac=0ee49796cbd81cd01ce36009bf03faa9af91bb4ef5282d41754c9fbd6a375eff" };
-            Angel angel4 = new Angel() { Id = 4, Name = "Spydou", Height = 1.73, Kg = 69, HairColor = HairColor.Blonde, Age = 22, ImageUrl = "https://scontent.fath7-1.fna.fbcdn.net/v/t1.18169-9/11698645_1018266678197344_8859098726973151258_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH8bOMpvKTyZL9-MEJHXyZTtGsMD8mu9Om0awwPya706dCfVzNflwZRm_SeUbkZyZdvE06XwMoDSLy99PPKYdxR&_nc_ohc=JV6LKzIPflYAX9zrSVV&_nc_ht=scontent.fath7-1.fna&oh=00_AT-2oygAAx6LwWB22P_HhIEGBa-IVszTYMdcUh1ZxhQEHg&oe=62D616EE" };
-            Angel angel5 = new Angel() { Id = 5, Name = "Helena", Height = 1.60, Kg = 52, HairColor = HairColor.Red, Age = 24, ImageUrl = "https://redheaddates.com/wp-content/uploads/2020/09/e9bcff20c68ae2e27e40335c745244370.jpg" };
-            Angel angel6 = new Angel() { Id = 6, Name = "Anastasia", Height = 1.67, Kg = 66, HairColor = HairColor.Black, Age = 29, ImageUrl = "https://cdn.thetealmango.com/wp-content/uploads/2022/02/Yael-Shelbia.jpg" };
-            Angel angel7 = new Angel() { Id = 7, Name = "Anjelina", Height = 1.69, Kg = 60, HairColor = HairColor.Blonde, Age = 27, ImageUrl = "https://cdn.thetealmango.com/wp-content/uploads/2021/07/angelina.jpg" };
-            Angel angel8 = new Angel() { Id = 8, Name = "Nicky", Height = 1.75, Kg = 70, HairColor = HairColor.Pink, Age = 30, ImageUrl = "https://i.pinimg.com/originals/06/56/31/0656319d5b512d6138d8631c491d9bd3.jpg" };
-            Angel angel9 = new Angel() { Id = 9, Name = "Sonia", Height = 1.72, Kg = 66, HairColor = HairColor.Brown, Age = 26, ImageUrl = "https://i0.wp.com/www.hadviser.com/wp-content/uploads/2020/04/2-long-dark-brown-hair-CKUAfqUh4Pd.jpg?resize=1021%2C1245&ssl=1" };
-            Angel angel10 = new Angel() { Id = 10, Name = "Nicole", Height = 1.63, Kg = 56, HairColor = HairColor.LightBlonde, Age = 20, ImageUrl = "https://images.pexels.com/photos/3448813/pexels-photo-3448813.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" };
+            #region IGmodels Seeding
+            IGmodel IGmodel1 = new IGmodel() { Id = 1, Name = "Tatiana", Height = 1.76, Kg = 66, HairColor = HairColor.LightBlonde, Age = 26, ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/81mckefMJHL.png" };
+            IGmodel IGmodel2 = new IGmodel() { Id = 2, Name = "Vicky", Height = 1.72, Kg = 67, HairColor = HairColor.Black, Age = 22, ImageUrl = "https://i.pinimg.com/736x/b0/b2/7c/b0b27c6aba57362956a18e999cdd87ea.jpg" };
+            IGmodel IGmodel3 = new IGmodel() { Id = 3, Name = "Victoria", Height = 1.68, Kg = 66, HairColor = HairColor.Brown, Age = 25, ImageUrl = "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5377.jpg?w=740&t=st=1655211315~exp=1655211915~hmac=0ee49796cbd81cd01ce36009bf03faa9af91bb4ef5282d41754c9fbd6a375eff" };
+            IGmodel IGmodel4 = new IGmodel() { Id = 4, Name = "Spydou", Height = 1.73, Kg = 69, HairColor = HairColor.Blonde, Age = 22, ImageUrl = "https://wallpapercave.com/wp/wp4997495.jpg" };
+            IGmodel IGmodel5 = new IGmodel() { Id = 5, Name = "Helena", Height = 1.60, Kg = 52, HairColor = HairColor.Red, Age = 24, ImageUrl = "https://redheaddates.com/wp-content/uploads/2020/09/e9bcff20c68ae2e27e40335c745244370.jpg" };
+            IGmodel IGmodel6 = new IGmodel() { Id = 6, Name = "Anastasia", Height = 1.67, Kg = 66, HairColor = HairColor.Black, Age = 29, ImageUrl = "https://cdn.thetealmango.com/wp-content/uploads/2022/02/Yael-Shelbia.jpg" };
+            IGmodel IGmodel7 = new IGmodel() { Id = 7, Name = "Anjelina", Height = 1.69, Kg = 60, HairColor = HairColor.Blonde, Age = 27, ImageUrl = "https://cdn.thetealmango.com/wp-content/uploads/2021/07/IGmodelina.jpg" };
+            IGmodel IGmodel8 = new IGmodel() { Id = 8, Name = "Nicky", Height = 1.75, Kg = 70, HairColor = HairColor.Pink, Age = 30, ImageUrl = "https://i.pinimg.com/originals/06/56/31/0656319d5b512d6138d8631c491d9bd3.jpg" };
+            IGmodel IGmodel9 = new IGmodel() { Id = 9, Name = "Sonia", Height = 1.72, Kg = 66, HairColor = HairColor.Brown, Age = 26, ImageUrl = "https://i0.wp.com/www.hadviser.com/wp-content/uploads/2020/04/2-long-dark-brown-hair-CKUAfqUh4Pd.jpg?resize=1021%2C1245&ssl=1" };
+            IGmodel IGmodel10 = new IGmodel() { Id = 10, Name = "Nicole", Height = 1.63, Kg = 56, HairColor = HairColor.LightBlonde, Age = 20, ImageUrl = "https://images.pexels.com/photos/3448813/pexels-photo-3448813.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" };
 
-            angel1.Room = r1;
-            angel2.Room = r2;
-            angel3.Room = r3;
-            angel4.Room = r4;
-            angel5.Room = r5;
-            angel6.Room = r6;
-            angel7.Room = r7;
-            angel8.Room = r8;
-            angel9.Room = r9;
-            angel10.Room = r10;
+            IGmodel1.Room = r1;
+            IGmodel2.Room = r2;
+            IGmodel3.Room = r3;
+            IGmodel4.Room = r4;
+            IGmodel5.Room = r5;
+            IGmodel6.Room = r6;
+            IGmodel7.Room = r7;
+            IGmodel8.Room = r8;
+            IGmodel9.Room = r9;
+            IGmodel10.Room = r10;
 
 
-            context.Angels.AddOrUpdate(a => a.Id, angel1, angel2, angel3, angel4, angel5, angel6, angel7, angel8, angel9, angel10);
+            context.IGmodels.AddOrUpdate(a => a.Id, IGmodel1, IGmodel2, IGmodel3, IGmodel4, IGmodel5, IGmodel6, IGmodel7, IGmodel8, IGmodel9, IGmodel10);
             context.SaveChanges();
             #endregion
 

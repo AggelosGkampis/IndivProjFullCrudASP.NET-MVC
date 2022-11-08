@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SkyDreaming.Models.Queries
 {
-    public class AngelSearchQuery
+    public class IGmodelSearchQuery
     {
        
     }

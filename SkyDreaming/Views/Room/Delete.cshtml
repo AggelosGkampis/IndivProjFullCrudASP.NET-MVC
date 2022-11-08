@@ -10,11 +10,11 @@
     alert("Be carefull")
 </script>
 <h3>Are you sure you want to delete this?</h3>
-<h3>All Angels associated with this project will be deleted</h3>
+<h3>All IGmodels associated with this project will be deleted</h3>
 <ul>
-    @foreach (var angel in Model.Angels)
+    @foreach (var IGmodel in Model.IGmodels)
     {
-        <li>@angel.Name</li>
+        <li>@IGmodel.Name</li>
     }
 
 </ul>

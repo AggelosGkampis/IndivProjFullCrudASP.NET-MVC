@@ -24,7 +24,7 @@ namespace SkyDreaming.Controllers
         // GET: Room
         public ActionResult Index()
         {
-            var rooms = roomRepository.GetAllWithAngels();
+            var rooms = roomRepository.GetAllWithIGmodels();
             return View(rooms.ToList());
         }
 
@@ -102,7 +102,7 @@ namespace SkyDreaming.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = roomRepository.GetByIdWithAngels(id);
+            Room room = roomRepository.GetByIdWithIGmodels(id);
             if (room == null)
             {
                 return HttpNotFound();

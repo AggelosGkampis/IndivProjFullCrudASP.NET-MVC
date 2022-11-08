@@ -24,13 +24,13 @@ namespace SkyDreaming.Models
 
         public Room()
         {
-            Angels = new HashSet<Angel>();
+            IGmodels = new HashSet<IGmodel>();
         }
 
 
 
         // Navigation Properties
 
-        public ICollection<Angel> Angels { get; set; }
+        public ICollection<IGmodel> IGmodels { get; set; }
     }
 }

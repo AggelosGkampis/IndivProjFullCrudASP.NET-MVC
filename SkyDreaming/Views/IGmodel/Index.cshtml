@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SkyDreaming.Models.Angel>
+﻿@model IEnumerable<SkyDreaming.Models.IGmodel>
 @*Για να ξέρει το view με ποιό model δουλεύω*@
 @using SkyDreaming.Models.Enums;
 
@@ -37,14 +37,14 @@
         <input type="number" name="searchMax" value="ViewBag.MaxAge" placeholder="Choose max age" max="ViewBag.MaxAge"/>
 
         <input type="text" name="searchName" value="@(ViewBag.currentMax is null ? @ViewBag.MaxAge : ViewBag.currentMax)" placeholder="Search name" />
-        <input type="submit" value="Search an Angel" />
+        <input type="submit" value="Search an IGmodel" />
     </form>
 
 </div>
 
 
 
-<a class="btn btn-primary" href="/Angel/Create">Create Angel</a>
+<a class="btn btn-primary" href="/IGmodel/Create">Create IGmodel</a>
 
 
 <table class="table">
@@ -76,10 +76,10 @@
                     <td>@ang.Age</td>
                     <td>@ang.Room.Name</td>
                     <td>
-                        <a class="btn btn-primary" href="/Angel/Edit?id=@ang.Id">Edit</a>
-                        @*<a class="btn btn-danger" href="/Angel/Delete?id=@ang.Id">Delete</a>*@
-                        <a class="btn alert-info" href="/Angel/Details?id=@ang.Id">Details</a>
-                        <form action="/Angel/delete" method="post">
+                        <a class="btn btn-primary" href="/IGmodel/Edit?id=@ang.Id">Edit</a>
+                        @*<a class="btn btn-danger" href="/IGmodel/Delete?id=@ang.Id">Delete</a>*@
+                        <a class="btn alert-info" href="/IGmodel/Details?id=@ang.Id">Details</a>
+                        <form action="/IGmodel/delete" method="post">
                             @Html.AntiForgeryToken()
                             <input type="hidden" name="id" value="@ang.Id" />
                             <input class="btn btn-danger" type="submit" value="Delete" />
@@ -99,11 +99,11 @@
                     <td>@ang.Age</td>
                     <td>@ang.Room.Name</td>
                     <td>
-                        <a class="btn btn-primary" href="/Angel/Edit?id=@ang.Id">Edit</a>
-                        @*<a class="btn btn-danger" href="/Angel/Delete?id=@ang.Id">Delete</a>*@
-                        <a class="btn alert-info" href="/Angel/Details?id=@ang.Id">Details</a>
+                        <a class="btn btn-primary" href="/IGmodel/Edit?id=@ang.Id">Edit</a>
+                        @*<a class="btn btn-danger" href="/IGmodel/Delete?id=@ang.Id">Delete</a>*@
+                        <a class="btn alert-info" href="/IGmodel/Details?id=@ang.Id">Details</a>
 
-                        <form action="/Angel/delete" method="post">
+                        <form action="/IGmodel/delete" method="post">
                             @Html.AntiForgeryToken()
                             <input type="hidden" name="id" value="@ang.Id" />
                             <input class="btn btn-danger" type="submit" value="Delete" />

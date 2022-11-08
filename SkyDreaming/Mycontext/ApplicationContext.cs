@@ -15,7 +15,7 @@ namespace SkyDreaming.Mycontext
             Database.SetInitializer<ApplicationContext>(new MockupDbInitializer());
             Database.Initialize(false);
         }
-        public DbSet<Angel> Angels { get; set; }
+        public DbSet<IGmodel> IGmodels { get; set; }
 
         public DbSet<Room> Rooms { get; set; }
     }

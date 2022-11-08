@@ -371,7 +371,7 @@ $.extend( $.validator, {
 		equalTo: "Please enter the same value again.",
 		maxlength: $.validator.format( "Please enter no more than {0} characters." ),
 		minlength: $.validator.format( "Please enter at least {0} characters." ),
-		rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
+		rIGmodelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
 		range: $.validator.format( "Please enter a value between {0} and {1}." ),
 		max: $.validator.format( "Please enter a value less than or equal to {0}." ),
 		min: $.validator.format( "Please enter a value greater than or equal to {0}." ),
@@ -1301,7 +1301,7 @@ $.extend( $.validator, {
 				rules[ this ] = Number( rules[ this ] );
 			}
 		} );
-		$.each( [ "rangelength", "range" ], function() {
+		$.each( [ "rIGmodelength", "range" ], function() {
 			var parts;
 			if ( rules[ this ] ) {
 				if ( $.isArray( rules[ this ] ) ) {
@@ -1322,7 +1322,7 @@ $.extend( $.validator, {
 				delete rules.max;
 			}
 			if ( rules.minlength != null && rules.maxlength != null ) {
-				rules.rangelength = [ rules.minlength, rules.maxlength ];
+				rules.rIGmodelength = [ rules.minlength, rules.maxlength ];
 				delete rules.minlength;
 				delete rules.maxlength;
 			}
@@ -1426,8 +1426,8 @@ $.extend( $.validator, {
 			return this.optional( element ) || length <= param;
 		},
 
-		// https://jqueryvalidation.org/rangelength-method/
-		rangelength: function( value, element, param ) {
+		// https://jqueryvalidation.org/rIGmodelength-method/
+		rIGmodelength: function( value, element, param ) {
 			var length = $.isArray( value ) ? value.length : this.getLength( value, element );
 			return this.optional( element ) || ( length >= param[ 0 ] && length <= param[ 1 ] );
 		},

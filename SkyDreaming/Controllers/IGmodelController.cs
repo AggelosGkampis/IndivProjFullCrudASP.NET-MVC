@@ -9,22 +9,22 @@ using System.Web.Mvc;
 
 namespace SkyDreaming.Controllers
 {
-    public class AngelController : Controller
+    public class IGmodelController : Controller
     {
         private ApplicationContext db = new ApplicationContext(); // αυτό το αντικέιμενο πρέπει να καταστραφεί γιατί έχουμε ένωση με την βάση
 
-        private AngelRepository angelRepo;
+        private IGmodelRepository IGmodelRepo;
         private RoomRepository roomRepository;
 
-        public AngelController()
+        public IGmodelController()
         {
-            angelRepo = new AngelRepository(db);
+            IGmodelRepo = new IGmodelRepository(db);
             roomRepository = new RoomRepository(db);
 
         }
         public ActionResult Index(string searchName,string searchHairColor,int? searchMin, int?searchMax)        // HomeController home = new HomeController();
         {                                                   // home.index();  Αυτή η λειτουργία γίνεται εσωτερικά αυτόματα           
-            var angels = angelRepo.GetAllWithRooms();
+            var IGmodels = IGmodelRepo.GetAllWithRooms();
 
             // Current State
             ViewBag.currentName = searchName;
@@ -33,43 +33,43 @@ namespace SkyDreaming.Controllers
             ViewBag.currentMax = searchMax;
             
 
-            ViewBag.MinAge = angels.Min(x => x.Age);
-            ViewBag.MaxAge = angels.Max(x => x.Age);
+            ViewBag.MinAge = IGmodels.Min(x => x.Age);
+            ViewBag.MaxAge = IGmodels.Max(x => x.Age);
 
             // Filtering . . .
             if (!string.IsNullOrWhiteSpace(searchName))     // null or "" or "   "
             {
-                //angels = angels.Where(x => x.Name.ToUpper() == searchName.ToUpper()).ToList();
-                angels = angels.Where(x => x.Name.ToUpper().Contains(searchName.ToUpper())).ToList();
+                //IGmodels = IGmodels.Where(x => x.Name.ToUpper() == searchName.ToUpper()).ToList();
+                IGmodels = IGmodels.Where(x => x.Name.ToUpper().Contains(searchName.ToUpper())).ToList();
             }
 
 
             if (searchHairColor != "All" && !string.IsNullOrWhiteSpace(searchHairColor))
             {
-                angels = angels.Where(x => x.HairColor.ToString() == searchHairColor).ToList();
+                IGmodels = IGmodels.Where(x => x.HairColor.ToString() == searchHairColor).ToList();
             }
 
             if (!(searchMin is null))
             {
-                angels = angels.Where(x => x.Age >= searchMin).ToList();
+                IGmodels = IGmodels.Where(x => x.Age >= searchMin).ToList();
             }
 
             if (!(searchMax is null))
             {
-                angels = angels.Where(x => x.Age <= searchMax).ToList();
+                IGmodels = IGmodels.Where(x => x.Age <= searchMax).ToList();
             }
 
-            return View(angels);
+            return View(IGmodels);
         }
 
         public ActionResult Details(int? id)
         {
-            var angel = angelRepo.GetById(id);
-            if (angel == null)
+            var IGmodel = IGmodelRepo.GetById(id);
+            if (IGmodel == null)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
             }
-            return View(angel);
+            return View(IGmodel);
         }
         
         [HttpGet]
@@ -81,17 +81,17 @@ namespace SkyDreaming.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Angel angel)
+        public ActionResult Create(IGmodel IGmodel)
         {
-            if (ModelState.IsValid)       // Εργαλείο του entityframework . Μας ρωτάει είναι σωστό το μοντέλο angel που μας έρχεται με βάση τα restrictions που έχουμε στα properties του montelou
+            if (ModelState.IsValid)       // Εργαλείο του entityframework . Μας ρωτάει είναι σωστό το μοντέλο IGmodel που μας έρχεται με βάση τα restrictions που έχουμε στα properties του montelou
             {
-                angelRepo.Add(angel);
-                ShowAlert("You have succesfully created an Angel");
+                IGmodelRepo.Add(IGmodel);
+                ShowAlert("You have succesfully created an IGmodel");
                 return RedirectToAction("Index");
             }
             GetProjects();
 
-            return View(angel);
+            return View(IGmodel);
            
         }
 
@@ -102,7 +102,7 @@ namespace SkyDreaming.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            var ang = angelRepo.GetById(id);
+            var ang = IGmodelRepo.GetById(id);
 
             if (ang == null)
             {
@@ -114,30 +114,30 @@ namespace SkyDreaming.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Angel angel)
+        public ActionResult Edit(IGmodel IGmodel)
         {
             if (ModelState.IsValid)
             {
-                angelRepo.Edit(angel);
-                ShowAlert($"Angel with id {angel.Id} succesfully updated !");
+                IGmodelRepo.Edit(IGmodel);
+                ShowAlert($"IGmodel with id {IGmodel.Id} succesfully updated !");
                 return RedirectToAction("Index");
             }
             GetProjects();
 
-            return View(angel);
+            return View(IGmodel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int? id)
         {
-            var angel = angelRepo.GetById(id);
-            if (angel == null)
+            var IGmodel = IGmodelRepo.GetById(id);
+            if (IGmodel == null)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
             }
-            angelRepo.Delete(angel);          
-            ShowAlert($"You have been successfully deleted the chick with name = {angel.Name}");
+            IGmodelRepo.Delete(IGmodel);          
+            ShowAlert($"You have been successfully deleted the chick with name = {IGmodel.Name}");
             return RedirectToAction("Index");                                           // Αφού διαγράψεις πήγαινέ με στην Index
 
         }
